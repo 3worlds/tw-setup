@@ -445,8 +445,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <span id="email" class="email"><a href="mailto:jacques.gignoux@upmc.fr">jacques.gignoux@upmc.fr</a></span><br>
 <span id="author2" class="author">Ian D. Davies</span><br>
 <span id="email2" class="email"><a href="mailto:ian.davies@anu.edu.au">ian.davies@anu.edu.au</a></span><br>
-<span id="revnumber">version 1.4,</span>
-<span id="revdate">19 September 2019</span>
+<span id="revnumber">version 1.5,</span>
+<span id="revdate">18 August 2020</span>
 <br><span id="revremark"></span>
 </div>
 <div id="toc" class="toc2">
@@ -498,7 +498,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>by <strong>Jacques Gignoux</strong> &amp; <strong>Ian D. Davies</strong></p>
 </div>
 <div class="paragraph">
-<p>Version: <strong>1.4</strong> (19 September 2019)</p>
+<p>Version: <strong>1.5</strong> (18 August 2020)</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -548,7 +548,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>qgraph</strong> is a <em>Query system for Graphs</em>. It implements a Query system that can check all sorts
 of conditions applying to objects. It has been designed by <strong>Shayne Flint</strong> for navigating graphs, but it can also be used for many other object types.</p>
 </dd>
-<dt class="hdlist1">ymui</dt>
+<dt class="hdlist1">ymuit</dt>
 <dd>
 <p><strong>ymuit</strong> stands for <em>Yet More User Interface tools</em>. It groups tools used to implement the user interface of 3Worlds, mainly color palettes and management of graphic output, which can be useful for any  <a href="https://wiki.openjdk.java.net/display/OpenJFX">javafx</a>-based interface.</p>
 </dd>
@@ -563,6 +563,10 @@ of conditions applying to objects. It has been designed by <strong>Shayne Flint<
 <dt class="hdlist1">tw-uifx</dt>
 <dd>
 <p><strong>tw-uifx</strong> contains the  <a href="https://wiki.openjdk.java.net/display/OpenJFX">javafx</a>-based interface classes for <em>ModelMaker</em> and <em>ModelRunner</em>.</p>
+</dd>
+<dt class="hdlist1">tw-setup</dt>
+<dd>
+<p><strong>tw-setup</strong> is used solely to create a jar containing all dependencies used by <em>ModelMaker</em> or <em>ModelRunner</em>.</p>
 </dd>
 </dl>
 </div>
@@ -678,18 +682,18 @@ of conditions applying to objects. It has been designed by <strong>Shayne Flint<
 <h2 id="trueworking-on-existing-3worlds-libraries"><a class="anchor" href="#trueworking-on-existing-3worlds-libraries"></a>2. Working on existing 3Worlds libraries</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To work on an existing library (<em>&lt;library&gt;</em> from hereon):</p>
+<p>To work on an existing library (<em>&lt;library&gt;</em>):</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Launch <strong>eclipse</strong>. Open a workspace or create a new workspace with a name of your choice (<em>&lt;workspace&gt;</em> from hereon).</p>
+<p>Launch <strong>eclipse</strong>. Create a new workspace.</p>
 </li>
 <li>
 <p>If the Welcome window opens (the default), disable the <code>Always show Welcome at start up</code> checkbox and close the Welcome window (this option causes problems with the editor behaviour in some versions of eclipse).</p>
 </li>
 <li>
-<p>Make sure eclipse is configured to use java <strong>11</strong> by default (check in the <code>Window &gt; Preferences</code> dialog box the <code>Java &gt; Compiler &gt; Compiler Compliance level</code>).</p>
+<p>Make sure eclipse is configured to use java <strong>11</strong> or greater by default (check in the <code>Window &gt; Preferences</code> dialog box the <code>Java &gt; Compiler &gt; Compiler Compliance level</code>).</p>
 </li>
 <li>
 <p>Shift to the Git perspective. You should now have a left window called <code>Git repositories</code>.</p>
@@ -769,21 +773,21 @@ Do <strong>not</strong> put the git repository inside the eclipse workspace, as 
 <p>Right-click on the project and select <code>Build Path &gt; Configure Build Path&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>Select the <code>Libraries</code> tab</p>
+<p>In the dialog box, select the <code>Libraries</code> tab</p>
 </li>
 <li>
-<p>Select the <code>Classpath</code> line. This should activate the buttons on the right-hand side of the dialog box</p>
+<p>In the <code>Libraries</code> tab, select <em>Classpath</em>. This should enable the buttons on the right of the dialog box</p>
 </li>
 <li>
-<p>Click on the <code>Add Library&#8230;&#8203;</code> button</p>
+<p>Click the <code>Add Libraries&#8230;&#8203;</code> button</p>
 </li>
 <li>
-<p>In the dialog box, select <em>JUnit</em> and click <code>Next</code></p>
+<p>In the dialog box, select <em>Junit</em> and click <code>Next</code></p>
 </li>
 <li>
 <p>Select version 5 of JUnit and click <code>Finish</code></p>
 <div class="paragraph">
-<p>This should remove the error icon on the <em>test</em> folder.</p>
+<p>The JUnit library should now appear in the dialog box under the <em>Classpath</em> entry.</p>
 </div>
 </li>
 </ul>
@@ -794,16 +798,10 @@ Do <strong>not</strong> put the git repository inside the eclipse workspace, as 
 <div class="ulist">
 <ul>
 <li>
-<p>Again, right-click on the project and select <code>Build Path &gt; Configure Build Path&#8230;&#8203;</code></p>
+<p>Without closing the dialog box, select <em>Classpath</em> again to enable the buttons on the right of the dialog box</p>
 </li>
 <li>
-<p>Select the <code>Libraries</code> tab</p>
-</li>
-<li>
-<p>Select the <code>Classpath</code> line. This should activate the buttons on the right hand side of the dialog box</p>
-</li>
-<li>
-<p>Click on the <code>Add Library&#8230;&#8203;</code> button</p>
+<p>Click the <code>Add Libraries&#8230;&#8203;</code> button</p>
 </li>
 <li>
 <p>In the dialog box, select <em>IvyDE Managed Dependencies</em> and click <code>Next</code></p>
@@ -1850,8 +1848,8 @@ You need to install <a href="https://pandoc.org/">pandoc</a> to do this.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.4<br>
-Last updated 2019-09-23 09:24:51 +0200
+Version 1.5<br>
+Last updated 2020-08-18 09:52:37 +0200
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
