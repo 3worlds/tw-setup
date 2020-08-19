@@ -34,6 +34,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.logging.Level;
 
 import au.edu.anu.omhtk.jars.Jars;
@@ -201,10 +204,14 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		// get all dependencies of all 3w libraries
 		// and pack them in a single jar
 		// this puts in everything since tw-uifx depends on all libraries
+		List<String> other = new ArrayList<>();
+		List<String> tw = new ArrayList<>();
 		for (String s: new DependencySolver(buildTwApplicationIvyFile().toString()).getJars()) {
 			packer.addJar(s);
 			if (s.contains("au.") || s.contains("fr."))
-				System.out.println("LOCAL: "+new File(s).getName());
+				tw.add(new File(s).getName());
+			else
+				other.add(new File(s).getName());
 		}
 		System.out.println("Packing...");
 		// except the code of tw-core. Why ??? Is this because we are in this project ?
@@ -222,6 +229,18 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		packer.saveJar(outFile);
 		// no main class
 		// not executable	
+		Collections.sort(other);
+		Collections.sort(tw);
+		System.out.println("------------- THIRD PARTY ---------------");
+		int count = 0;
+		for (String s:other)
+			System.out.println(++count + "\t"+s);
+		System.out.println("------------- 3WORLDS LIBS --------------");
+		count = 0;
+		for (String s:tw)
+			System.out.println(++count+"\t"+s);
+		
+		
 		System.out.println("...done");
 	}
 
