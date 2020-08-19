@@ -101,7 +101,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 				"	</publications>\n" + 
 				"\n" + 
 				"	<dependencies>\n" + 
-				"		<dependency org=\"au.edu.anu.tw-uifx\" name=\"tw-uifx\" rev=\"[0.3.10,)\"/>\n" + 
+				"		<dependency org=\"au.edu.anu.tw-uifx\" name=\"tw-uifx\" rev=\"[0.3.11,)\"/>\n" + 
 				"	</dependencies>\n" + 
 				"\n" + 
 				"</ivy-module>\n" + 
