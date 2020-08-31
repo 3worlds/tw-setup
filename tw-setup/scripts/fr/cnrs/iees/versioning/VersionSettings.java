@@ -84,7 +84,7 @@ public class VersionSettings {
 	 */
 	protected static String[][] DEPS = { 
 			{"fr.ens.biologie", "generics", "[0.1.17,)", null},
-			{"fr.cnrs.iees.tw-core", "tw-core", "[0.3.20,)", null},
+			{"fr.cnrs.iees.tw-core", "tw-core", "[0.3.22,)", null},
 			{"org.apache.ivy", "ivy", "2.2.0", null},
 	};
 	
