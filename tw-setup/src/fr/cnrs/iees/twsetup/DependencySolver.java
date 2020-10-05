@@ -109,7 +109,7 @@ public class DependencySolver implements ProjectPaths, TwPaths {
 	}
 
 	/**
-	 * This default ivy settings file is a copy of the default one found in
+	 * This default ivy settings file is a copy of the default one found inip
 	 * ~/.ivy2/cache/org.apache.ivy/ivy/jars/ivy-2.2.0.jar
 	 */
 	private void buildIvySettingsFile() {

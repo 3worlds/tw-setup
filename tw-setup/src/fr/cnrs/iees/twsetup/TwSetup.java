@@ -200,16 +200,20 @@ public class TwSetup implements ProjectPaths, TwPaths {
 			else if (!other.contains(name))
 				other.add(name);
 		}
-		System.out.println("Packing...");
+		System.out.println("packing jar...");
+		/** Below no longer required now setup is in a separate prj. In fact its best if
+		 twSetup is not included.*/
+		
+		
 		// except the code of tw-core. Why ??? Is this because we are in this project ?
 		// Well, then:
-		packer.addPackageTree("au.edu.anu");
-		packer.addPackageTree("fr.ens.biologie");
-		packer.addPackageTree("fr.cnrs.iees");
+		// packer.addPackageTree("au.edu.anu");
+		// packer.addPackageTree("fr.ens.biologie");
+		// packer.addPackageTree("fr.cnrs.iees");
 //		System.out.println("PACKING: fr.cnrs.iees.twcore");
-		packer.addPackageTree("fr.cnrs.iees.twcore");
+		// packer.addPackageTree("fr.cnrs.iees.twcore");
 //		System.out.println("PACKING: au.edu.anu.twcore");
-		packer.addPackageTree("au.edu.anu.twcore");
+		// packer.addPackageTree("au.edu.anu.twcore");
 //		for (String s:getProjectDependencies("uit")) packer.addJar(s);
 //		for (String s:getProjectDependencies("ymuit")) packer.addJar(s);
 		File outFile = jarFile(filename);
