@@ -1,5 +1,5 @@
 <!--===================================================================================
- ant and ivy scripts for project <tw-setup> version 0.0.2 (Tue Oct 06 10:21:52 CEST 2020)
+ ant and ivy scripts for project <tw-setup> version 0.0.1 (Mon Aug 17 16:26:16 AEST 2020)
  author: Jacques Gignoux <jacques.gignoux@upmc.fr>
 
  CAUTION: this file is generated - DO NOT EDIT!
@@ -13,7 +13,7 @@
 
 	<info	organisation="fr.cnrs.iees.tw-setup"
 			module="tw-setup"
-			revision="0.0.2"
+			revision="0.0.1"
 			status="integration">
 		<license name="gpl3" url="https://www.gnu.org/licenses/gpl-3.0.txt"/>
 		<description>This module is specifically for generating the dependency file for 3Worlds: tw-dep.jar.</description>
@@ -30,9 +30,9 @@
 	</publications>
 
 	<dependencies>
-		<dependency org="fr.ens.biologie" name="generics" rev="[0.2.0,)"/>
-		<dependency org="fr.cnrs.iees.tw-core" name="tw-core" rev="[0.3.25,)"/>
 		<dependency org="org.apache.ivy" name="ivy" rev="2.2.0"/>
+		<dependency org="fr.cnrs.iees.tw-core" name="tw-core" rev="[0.3.25,)"/>
+		<dependency org="fr.ens.biologie" name="generics" rev="[0.2.0,)"/>
 	</dependencies>
 
 </ivy-module>
