@@ -34,6 +34,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -201,10 +202,11 @@ public class TwSetup implements ProjectPaths, TwPaths {
 				other.add(name);
 		}
 		System.out.println("packing jar...");
-		/** Below no longer required now setup is in a separate prj. In fact its best if
-		 twSetup is not included.*/
-		
-		
+		/**
+		 * Below no longer required now setup is in a separate prj. In fact its best if
+		 * twSetup is not included.
+		 */
+
 		// except the code of tw-core. Why ??? Is this because we are in this project ?
 		// Well, then:
 		// packer.addPackageTree("au.edu.anu");
@@ -231,7 +233,8 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		for (String s : tw)
 			System.out.println(++count + "\t" + s);
 
-		System.out.println("...done");
+		System.out.println("\n" + outFile.getName() + " ["
+				+ new DecimalFormat("#.##").format(outFile.length() / 1048576.0) + " Mb.]\n");
 	}
 
 // useless - can only get classes from local project	
