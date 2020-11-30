@@ -4,7 +4,7 @@
 
  CAUTION: this file is generated - DO NOT EDIT!
  If you need to change this file, edit ../version/Setup.java appropriately and run it.
- This will re-generate this file and manage version numbers properly. 
+ This will re-generate this file and manage version numbers properly.
 ===================================================================================-->
 <ivy-module version="2.0"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -31,7 +31,7 @@
 
 	<dependencies>
 		<dependency org="fr.ens.biologie" name="generics" rev="[0.2.2,)"/>
-		<dependency org="fr.cnrs.iees.tw-core" name="tw-core" rev="[0.3.26,)"/>
+		<dependency org="fr.cnrs.iees.tw-core" name="tw-core" rev="[0.3.27,)"/>
 		<dependency org="org.apache.ivy" name="ivy" rev="2.2.0"/>
 	</dependencies>
 
