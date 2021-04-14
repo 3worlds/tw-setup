@@ -90,7 +90,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 				+ "	</configurations>\n" + "\n" + "	<publications>\n" + "		<artifact type=\"jar\" ext=\"jar\">\n"
 				+ "			<conf name=\"java library\"/>\n" + "		</artifact>\n" + "	</publications>\n" + "\n"
 				+ "	<dependencies>\n"
-				+ "		<dependency org=\"au.edu.anu.tw-uifx\" name=\"tw-uifx\" rev=\"[0.3.11,)\"/>\n"
+				+ "		<dependency org=\"au.edu.anu.tw-uifx\" name=\"tw-uifx\" rev=\"[0.3.12,)\"/>\n"
 				+ "	</dependencies>\n" + "\n" + "</ivy-module>\n" + "";
 		File outf = new File("bidon.xml");
 		PrintWriter writer;
