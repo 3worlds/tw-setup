@@ -5,7 +5,8 @@ Jacques Gignoux <jacques.gignoux@upmc.fr>; Ian D. Davies <ian.davies@anu.edu.au>
 //v1.2, 26 November 2018:
 //v1.3, 17 December 2018:
 //v1.4, 19 September 2019:
-v1.5, 18 August 2020:
+//v1.5, 18 August 2020:
+v1.6, 15 April 2021:
 :sectnums:
 :toc: left
 
@@ -46,11 +47,13 @@ tw-apps:: *tw-apps* contains the two applications needed to run 3Worlds, the _Mo
 
 tw-uifx:: *tw-uifx* contains the  https://wiki.openjdk.java.net/display/OpenJFX[javafx]-based interface classes for _ModelMaker_ and _ModelRunner_.
 
-tw-setup:: *tw-setup* is used solely to create a jar containing all dependencies used by _ModelMaker_ or _ModelRunner_. 
+tw-models:: *tw-models* is a library of models designed with 3Worlds, including test and tutorial models.
 
-[#fig-dependency-tree]
-.Dependencies of 3Worlds libraries.
-image::3w-lib-dependencies.svg[align="center"]
+tw-setup:: *tw-setup* is used solely to create a jar containing all dependencies used by _ModelMaker_ or _ModelRunner_. As such it is not strictly part of 3Worlds.
+
+[[fig-dependency-tree]]
+.Dependencies of 3Worlds libraries. 3Worlds libraries are in green, third-party libraries are listed in the yellow boxes.
+image::3w-lib-dependencies.svg[align="center"] 
 
 
 === Library organisation
