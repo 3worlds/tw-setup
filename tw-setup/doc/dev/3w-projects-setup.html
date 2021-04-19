@@ -727,15 +727,24 @@ of conditions applying to objects. It has been designed by <strong>Shayne Flint<
 </li>
 </ul>
 </div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Do not use the git repository URI starting with <code><a href="https://&lt;gitrepo&gt" class="bare">https://&lt;gitrepo&gt</a>;</code> as this will not use the ssh key authentication, and will ask you for your git user and password every time you want to access the remote git repository.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p>Click <code>Next</code>.</p>
 </li>
 <li>
 <p>Click <code>Next</code> again. Enter the location for your local git repository. The default location is usually a <em>git</em> directory under the user home.</p>
-</li>
-</ol>
-</div>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -748,8 +757,7 @@ Do <strong>not</strong> put the git repository inside the eclipse workspace, as 
 </tr>
 </table>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Click <code>Finish</code>. After the download completes, a new entry will appear in the <code>Git repository</code> window. If this fails, check your access to the remote repository.</p>
 </li>
@@ -1853,7 +1861,7 @@ You need to install <a href="https://pandoc.org/">pandoc</a> to do this.</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.6<br>
-Last updated 2021-04-15 11:57:43 +0200
+Last updated 2021-04-19 11:20:01 +0200
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

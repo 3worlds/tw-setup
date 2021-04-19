@@ -126,10 +126,14 @@ To work on an existing library (_<library>_):
 
 ** `git@gitlab.anu.edu.au:ThreeWorlds/_<library>_.git` for ANU
 
++
+CAUTION: Do not use the git repository URI starting with ``https://<gitrepo>`` as this will not use the ssh key authentication, and will ask you for your git user and password every time you want to access the remote git repository. 
+
 . Click `Next`. 
 
 . Click `Next` again. Enter the location for your local git repository. The default location is usually a _git_ directory under the user home.  
 
++
 WARNING: Do *not* put the git repository inside the eclipse workspace, as this will cause trouble later.
 
 . Click `Finish`. After the download completes, a new entry will appear in the `Git repository` window. If this fails, check your access to the remote repository.
