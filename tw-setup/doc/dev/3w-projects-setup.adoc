@@ -6,7 +6,9 @@ Jacques Gignoux <jacques.gignoux@upmc.fr>; Ian D. Davies <ian.davies@anu.edu.au>
 //v1.3, 17 December 2018:
 //v1.4, 19 September 2019:
 //v1.5, 18 August 2020:
-v1.6, 15 April 2021:
+//v1.6, 15 April 2021:
+v1.7, 17 May 2021:
+
 :sectnums:
 :toc: left
 
@@ -613,6 +615,14 @@ This said, generating a javadoc using eclipse is particularly easy:
 . In the `Destination:` field, replace _/doc_ by _/javadoc_ to comply with the 3Worlds library directory structure described in <<Library organisation>>. 
 
 . Click `Finish`. in the opening dialog box, confirm (`Yes to All`). You should now see a huge bunch of files appearing in the _javadoc_ directory. Open _index.html_ in a browser to explore the javadoc.
+
+If you want to include images (e.g. UML diagrams) in your javadoc class comments, here is a way to proceed:
+
+. store your image file in your project _doc_ directory, in a sub-directory called for example _images_.
+
+NOTE: prefer the `.svg` file format for graphhics as it is more flexible.
+
+. in your javadoc comment, refer to such files using the html tag `<img/ src="{@docRoot}/../doc/__images__/__my_image_file__">`. `{@docRoot}` refers to the project default package, here the _src_ directory; this way graphics and illustrations are not going to mess up with the java code.
 
 == Writing documentation
 
