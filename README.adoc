@@ -1,0 +1,6 @@
+= The TW-SETUP library
+
+*tw-setup* is used solely to create a jar containing all dependencies used by _ModelMaker_ or _ModelRunner_. As such it is not strictly part of 3Worlds.
+
+Depends on: https://github.com/3worlds/omhtk[omhtk], 
+https://github.com/3worlds/tw-core[tw-core]
