@@ -1,5 +1,5 @@
 /**************************************************************************
- *  TW-SETUP - tw-dep.jar generator                                       *
+ *  TW-SETUP - tw.jar generator                                       *
  *                                                                        *
  *  Copyright 2018: Shayne Flint, Jacques Gignoux & Ian D. Davies         *
  *       shayne.flint@anu.edu.au                                          * 
@@ -7,7 +7,7 @@
  *       ian.davies@anu.edu.au                                            * 
  *                                                                        *
  *  This module is specifically for generating the dependency file for    *
- *  3Worlds: tw-dep.jar.                                                  *
+ *  3Worlds: tw.jar.                                                  *
  *                                                                        *
  **************************************************************************                                       
  *  This file is part of TW-SETUP.                                        *
@@ -109,7 +109,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 	 * For end users: generates a Jar with ModelMaker ready to run. This jar is just
 	 * a manifest with:
 	 * <ul>
-	 * <li>tw-dep.jar</li>
+	 * <li>tw.jar</li>
 	 * </ul>
 	 * assuming these two jars reside in the same directory as ModelMaker.jar
 	 * </p>
@@ -144,7 +144,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 	 * For end users: generates a Jar with ModelMaker ready to run. This jar is just
 	 * a manifest with:
 	 * <ul>
-	 * <li>tw-dep.jar</li>
+	 * <li>tw.jar</li>
 	 * </ul>
 	 * // for (String s:getProjectDependencies("tw-uifx")) // packer.addJar(s);
 	 * 
@@ -286,7 +286,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		System.out.println("FINISHED");
 		// 5) zip ModelMaker = .3w dir for distribution to end users
 		// do it from the system - it's easier !
-		// eg on linux: zip 3w.zip modelMaker.jar .3w/threeWorlds.jar .3w/tw-dep.jar
+		// eg on linux: zip 3w.zip modelMaker.jar 3w/threeWorlds.jar 3w/tw.jar
 
 	}
 }
