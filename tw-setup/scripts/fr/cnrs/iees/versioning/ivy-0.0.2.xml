@@ -1,10 +1,10 @@
 <!--===================================================================================
- ant and ivy scripts for project <tw-setup> version 0.1.0 (Fri Mar 11 15:27:19 CET 2022)
+ ant and ivy scripts for project <tw-setup> version 0.0.2 (Tue Oct 06 10:21:52 CEST 2020)
  author: Jacques Gignoux <jacques.gignoux@upmc.fr>
 
  CAUTION: this file is generated - DO NOT EDIT!
  If you need to change this file, edit ../version/Setup.java appropriately and run it.
- This will re-generate this file and manage version numbers properly. 
+ This will re-generate this file and manage version numbers properly.
 ===================================================================================-->
 <ivy-module version="2.0"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -13,7 +13,7 @@
 
 	<info	organisation="fr.cnrs.iees.tw-setup"
 			module="tw-setup"
-			revision="0.1.0"
+			revision="0.0.2"
 			status="integration">
 		<license name="gpl3" url="https://www.gnu.org/licenses/gpl-3.0.txt"/>
 		<description>This module is specifically for generating the dependency file for 3Worlds: tw-dep.jar.</description>
