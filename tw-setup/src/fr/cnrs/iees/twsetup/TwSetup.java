@@ -45,9 +45,7 @@ import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -146,6 +144,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		String twFxFileName = TW_FX_DEP_JAR;
 		// main class in manifest
 		twDepPacker.setMainClass(MODELMAKER_CLASS);
+		//fxDepPacker.setMainClass("javafx.application.Application"); // doesnt work
 		// get all dependencies of all 3w libraries
 		// and pack them in a single jar
 		// this puts in everything since tw-uifx depends on all libraries
@@ -153,8 +152,13 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		List<String> other = new ArrayList<>();
 		List<String> tw = new ArrayList<>();
 		for (String s : new DependencySolver(buildTwApplicationIvyFile().toString()).getJars()) {
-			if (s.contains("javafx-base") || s.contains("javafx-swing") || s.contains("javafx-controls")
-					|| s.contains("javafx-web") || s.contains("javafx-graphics") || s.contains("javafx-media")) {
+			if (s.contains("javafx-base") || 
+				s.contains("javafx-swing") || 
+				s.contains("javafx-controls") || 
+				s.contains("javafx-web") || 
+				s.contains("javafx-graphics") || 
+				s.contains("javafx-media") ||
+				s.contains("javafx-fxml")) {
 //				System.out.println("JAVAFX: " + s);
 				fxDepPacker.addJar(s);
 			} else
@@ -167,6 +171,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		}
 		// TODO update manifest in dep with fxDep
 		twDepPacker.addDependencyOnJar("./"+twFxFileName);
+//		twDepPacker.addDependencyOnJar(twFxFileName); // doesnt change anything
 		System.out.println("packing jar...");
 		// write jar
 		File depJarFile = jarFile(twDepFileName);
