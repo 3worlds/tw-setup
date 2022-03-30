@@ -152,6 +152,8 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		List<String> other = new ArrayList<>();
 		List<String> tw = new ArrayList<>();
 		for (String s : new DependencySolver(buildTwApplicationIvyFile().toString()).getJars()) {
+//			if (s.contains("javafx"))
+//				System.out.println("FX: "+s);
 			if (s.contains("javafx-base") || 
 				s.contains("javafx-swing") || 
 				s.contains("javafx-controls") || 
@@ -171,6 +173,8 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		}
 		// TODO update manifest in dep with fxDep
 		twDepPacker.addDependencyOnJar("./"+twFxFileName);
+		// Trying making this circular???
+		//fxDepPacker.addDependencyOnJar("./"+twDepFileName);
 //		twDepPacker.addDependencyOnJar(twFxFileName); // doesnt change anything
 		System.out.println("packing jar...");
 		// write jar
