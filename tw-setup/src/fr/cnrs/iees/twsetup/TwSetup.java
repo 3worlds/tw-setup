@@ -139,9 +139,9 @@ public class TwSetup implements ProjectPaths, TwPaths {
 	 */
 	private static void pack3wAll(String major, String minor, String build) {
 		ThreeWorldsJar twDepPacker = new ThreeWorldsJar(major, minor, build);
-		ThreeWorldsJar fxDepPacker = new ThreeWorldsJar(major, minor, build);
+//		ThreeWorldsJar fxDepPacker = new ThreeWorldsJar(major, minor, build);
 		String twDepFileName = TW_DEP_JAR;
-		String twFxFileName = TW_FX_DEP_JAR;
+//		String twFxFileName = TW_FX_DEP_JAR;
 		// main class in manifest
 		twDepPacker.setMainClass(MODELMAKER_CLASS);
 		//fxDepPacker.setMainClass("javafx.application.Application"); // doesnt work
@@ -154,16 +154,16 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		for (String s : new DependencySolver(buildTwApplicationIvyFile().toString()).getJars()) {
 //			if (s.contains("javafx"))
 //				System.out.println("FX: "+s);
-			if (s.contains("javafx-base") || 
-				s.contains("javafx-swing") || 
-				s.contains("javafx-controls") || 
-				s.contains("javafx-web") || 
-				s.contains("javafx-graphics") || 
-				s.contains("javafx-media") ||
-				s.contains("javafx-fxml")) {
-//				System.out.println("JAVAFX: " + s);
-				fxDepPacker.addJar(s);
-			} else
+//			if (s.contains("javafx-base") || 
+//				s.contains("javafx-swing") || 
+//				s.contains("javafx-controls") || 
+//				s.contains("javafx-web") || 
+//				s.contains("javafx-graphics") || 
+//				s.contains("javafx-media") ||
+//				s.contains("javafx-fxml")) {
+////				System.out.println("JAVAFX: " + s);
+//				fxDepPacker.addJar(s);
+//			} else
 				twDepPacker.addJar(s);
 			String name = new File(s).getName();
 			if (s.contains("au.") || s.contains("fr."))
@@ -172,8 +172,8 @@ public class TwSetup implements ProjectPaths, TwPaths {
 				other.add(name);
 		}
 		// TODO update manifest in dep with fxDep
-		twDepPacker.addDependencyOnJar("./"+twFxFileName);
-		// Trying making this circular???
+//		twDepPacker.addDependencyOnJar("./"+twFxFileName);
+		// Trying making this circular??? - useless
 		//fxDepPacker.addDependencyOnJar("./"+twDepFileName);
 //		twDepPacker.addDependencyOnJar(twFxFileName); // doesnt change anything
 		System.out.println("packing jar...");
@@ -182,8 +182,8 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		twDepPacker.saveJar(depJarFile);
 		// set executable
 		depJarFile.setExecutable(true, false);
-		File fxDepJarFile = jarFile(twFxFileName);
-		fxDepPacker.saveJar(fxDepJarFile);
+//		File fxDepJarFile = jarFile(twFxFileName);
+//		fxDepPacker.saveJar(fxDepJarFile);
 		
 		
 		// output to console
@@ -199,8 +199,8 @@ public class TwSetup implements ProjectPaths, TwPaths {
 			System.out.println(++count + "\t" + s);
 		System.out.println("\n" + depJarFile.getName() + " ["
 				+ new DecimalFormat("#.##").format(depJarFile.length() / 1048576.0) + " Mb.]");
-		System.out.println(fxDepJarFile.getName() + " ["
-				+ new DecimalFormat("#.##").format(fxDepJarFile.length() / 1048576.0) + " Mb.]\n");
+//		System.out.println(fxDepJarFile.getName() + " ["
+//				+ new DecimalFormat("#.##").format(fxDepJarFile.length() / 1048576.0) + " Mb.]\n");
 	}
 
 	// copied from https://www.baeldung.com/java-compress-and-uncompress
