@@ -144,7 +144,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 //		String twFxFileName = TW_FX_DEP_JAR;
 		// main class in manifest
 		twDepPacker.setMainClass(MODELMAKER_CLASS);
-		//fxDepPacker.setMainClass("javafx.application.Application"); // doesnt work
+//		fxDepPacker.setMainClass("javafx.application.Application"); // doesnt work
 		// get all dependencies of all 3w libraries
 		// and pack them in a single jar
 		// this puts in everything since tw-uifx depends on all libraries
@@ -173,9 +173,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		}
 		// TODO update manifest in dep with fxDep
 //		twDepPacker.addDependencyOnJar("./"+twFxFileName);
-		// Trying making this circular??? - useless
-		//fxDepPacker.addDependencyOnJar("./"+twDepFileName);
-//		twDepPacker.addDependencyOnJar(twFxFileName); // doesnt change anything
+
 		System.out.println("packing jar...");
 		// write jar
 		File depJarFile = jarFile(twDepFileName);
