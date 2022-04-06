@@ -32,9 +32,7 @@ package fr.cnrs.iees.twsetup;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -47,9 +45,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-
 import au.edu.anu.rscs.aot.util.FileUtilities;
 import au.edu.anu.twcore.project.ProjectPaths;
 import au.edu.anu.twcore.project.TwPaths;
@@ -64,6 +59,9 @@ import fr.ens.biologie.generic.utils.Logging;
  * regenerating them using the 3w libraries build.xml scripts in the proper
  * order (ie omhtk > omugi > qgraph > aot > tw-core > tw-apps > tw-uifx)
  * 
+ * As of 6/4/2022, packing of code in 1 single fat jar is the only way to make the code runnable
+ * without modularizing the code. no way to pack javafw into a separate jar in a usable way.
+// * 
  * @author Ian Davies
  * @date 10 Dec. 2017
  */
@@ -139,9 +137,9 @@ public class TwSetup implements ProjectPaths, TwPaths {
 	 */
 	private static void pack3wAll(String major, String minor, String build) {
 		ThreeWorldsJar twDepPacker = new ThreeWorldsJar(major, minor, build);
-		ThreeWorldsJar fxDepPacker = new ThreeWorldsJar(major, minor, build);
+//		ThreeWorldsJar fxDepPacker = new ThreeWorldsJar(major, minor, build);
 		String twDepFileName = TW_DEP_JAR;
-		String twFxFileName = TW_FX_DEP_JAR;
+//		String twFxFileName = TW_FX_DEP_JAR;
 		// main class in manifest
 		twDepPacker.setMainClass(MODELMAKER_CLASS);
 //		fxDepPacker.setMainClass("javafx.application.Application"); // doesnt work
@@ -152,18 +150,18 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		List<String> other = new ArrayList<>();
 		List<String> tw = new ArrayList<>();
 		for (String s : new DependencySolver(buildTwApplicationIvyFile().toString()).getJars()) {
-			if (s.contains("javafx"))
-				System.out.println("FX: "+s);
-			if (s.contains("javafx-base") || 
-				s.contains("javafx-swing") || 
-				s.contains("javafx-controls") || 
-				s.contains("javafx-web") || 
-				s.contains("javafx-graphics") || 
-				s.contains("javafx-media") ||
-				s.contains("javafx-fxml")) {
-				System.out.println("JAVAFX: " + s);
-				fxDepPacker.addJar(s);
-			} else
+//			if (s.contains("javafx"))
+//				System.out.println("FX: "+s);
+//			if (s.contains("javafx-base") || 
+//				s.contains("javafx-swing") || 
+//				s.contains("javafx-controls") || 
+//				s.contains("javafx-web") || 
+//				s.contains("javafx-graphics") || 
+//				s.contains("javafx-media") ||
+//				s.contains("javafx-fxml")) {
+//				System.out.println("JAVAFX: " + s);
+//				fxDepPacker.addJar(s);
+//			} else
 				twDepPacker.addJar(s);
 			String name = new File(s).getName();
 			if (s.contains("au.") || s.contains("fr."))
@@ -172,7 +170,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 				other.add(name);
 		}
 		// TODO update manifest in dep with fxDep
-		twDepPacker.addDependencyOnJar("./"+twFxFileName);
+//		twDepPacker.addDependencyOnJar("./"+twFxFileName);
 
 		System.out.println("packing jar...");
 		// write jar
@@ -180,8 +178,8 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		twDepPacker.saveJar(depJarFile);
 		// set executable
 		depJarFile.setExecutable(true, false);
-		File fxDepJarFile = jarFile(twFxFileName);
-		fxDepPacker.saveJar(fxDepJarFile);
+//		File fxDepJarFile = jarFile(twFxFileName);
+//		fxDepPacker.saveJar(fxDepJarFile);
 		
 		
 		// output to console
@@ -197,56 +195,56 @@ public class TwSetup implements ProjectPaths, TwPaths {
 			System.out.println(++count + "\t" + s);
 		System.out.println("\n" + depJarFile.getName() + " ["
 				+ new DecimalFormat("#.##").format(depJarFile.length() / 1048576.0) + " Mb.]");
-		System.out.println(fxDepJarFile.getName() + " ["
-				+ new DecimalFormat("#.##").format(fxDepJarFile.length() / 1048576.0) + " Mb.]\n");
+//		System.out.println(fxDepJarFile.getName() + " ["
+//				+ new DecimalFormat("#.##").format(fxDepJarFile.length() / 1048576.0) + " Mb.]\n");
 	}
 
 	// copied from https://www.baeldung.com/java-compress-and-uncompress
-	private static void zipFile(File fileToZip, String fileName, ZipOutputStream zipOut) throws IOException {
-		if (fileToZip.isHidden()) {
-			return;
-		}
-		if (fileToZip.isDirectory()) {
-			if (fileName.endsWith("/")) {
-				zipOut.putNextEntry(new ZipEntry(fileName));
-				zipOut.closeEntry();
-			} else {
-				zipOut.putNextEntry(new ZipEntry(fileName + "/"));
-				zipOut.closeEntry();
-			}
-			File[] children = fileToZip.listFiles();
-			for (File childFile : children) {
-				// added to only store tw.jar
-				if (childFile.getName().equals(TW_DEP_JAR))
-					// end
-					zipFile(childFile, fileName + "/" + childFile.getName(), zipOut);
-			}
-			return;
-		}
-		FileInputStream fis = new FileInputStream(fileToZip);
-		ZipEntry zipEntry = new ZipEntry(fileName);
-		zipOut.putNextEntry(zipEntry);
-		byte[] bytes = new byte[1024];
-		int length;
-		while ((length = fis.read(bytes)) >= 0) {
-			zipOut.write(bytes, 0, length);
-		}
-		fis.close();
-	}
+//	private static void zipFile(File fileToZip, String fileName, ZipOutputStream zipOut) throws IOException {
+//		if (fileToZip.isHidden()) {
+//			return;
+//		}
+//		if (fileToZip.isDirectory()) {
+//			if (fileName.endsWith("/")) {
+//				zipOut.putNextEntry(new ZipEntry(fileName));
+//				zipOut.closeEntry();
+//			} else {
+//				zipOut.putNextEntry(new ZipEntry(fileName + "/"));
+//				zipOut.closeEntry();
+//			}
+//			File[] children = fileToZip.listFiles();
+//			for (File childFile : children) {
+//				// added to only store tw.jar
+//				if (childFile.getName().equals(TW_DEP_JAR))
+//					// end
+//					zipFile(childFile, fileName + "/" + childFile.getName(), zipOut);
+//			}
+//			return;
+//		}
+//		FileInputStream fis = new FileInputStream(fileToZip);
+//		ZipEntry zipEntry = new ZipEntry(fileName);
+//		zipOut.putNextEntry(zipEntry);
+//		byte[] bytes = new byte[1024];
+//		int length;
+//		while ((length = fis.read(bytes)) >= 0) {
+//			zipOut.write(bytes, 0, length);
+//		}
+//		fis.close();
+//	}
 
 	// copied & adapted from https://www.baeldung.com/java-compress-and-uncompress
-	private static void zipDir(String directory, String zipFile) {
-		try {
-			FileOutputStream fos = new FileOutputStream(zipFile);
-			ZipOutputStream zipOut = new ZipOutputStream(fos);
-			File fileToZip = new File(directory);
-			zipFile(fileToZip, fileToZip.getName(), zipOut);
-			zipOut.close();
-			fos.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	private static void zipDir(String directory, String zipFile) {
+//		try {
+//			FileOutputStream fos = new FileOutputStream(zipFile);
+//			ZipOutputStream zipOut = new ZipOutputStream(fos);
+//			File fileToZip = new File(directory);
+//			zipFile(fileToZip, fileToZip.getName(), zipOut);
+//			zipOut.close();
+//			fos.close();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	private static void confirmVersionUpgrade(String oldv, String newv) {
 		System.out.print(
