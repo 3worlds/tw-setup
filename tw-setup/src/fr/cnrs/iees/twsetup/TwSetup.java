@@ -253,7 +253,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			String s = br.readLine();
 			if (s.startsWith("N") || s.startsWith("n")) {
-				System.out.println("OK, OK. Why bother me if you don't want to do it? Aborting.");
+				System.out.println("Aborting upgrade.");
 				System.exit(0);
 			}
 		} catch (IOException e1) {
