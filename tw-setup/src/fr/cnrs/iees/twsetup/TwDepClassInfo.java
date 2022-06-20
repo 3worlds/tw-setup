@@ -51,7 +51,7 @@ public class TwDepClassInfo {
 			// Not much use doing the same for .java because they are not all there so
 			// comparison with .class file means nothing.
 			jf = new JarFile(f.getAbsolutePath());
-			Enumeration e = jf.entries();
+			Enumeration<JarEntry> e = jf.entries();
 			while (e.hasMoreElements()) {
 				JarEntry je = (JarEntry) e.nextElement();
 				String name = je.getName();
