@@ -358,7 +358,8 @@ public class TwSetup implements ProjectPaths, TwPaths {
 			System.exit(1);
 		}
 		version.append(major).append(DOT).append(minor).append(DOT).append(build);
-		String os = System.getProperty("os.name").toLowerCase();
+		String os = System.getProperty("os.name")/*.toLowerCase()*/;
+		os+="-java-"+System.getProperty("java.version")+" ";
 		// both manifests will have os - tw.jar doesnt need this but leave for now for debugging.
 		String zipFileName = null;
 		if (pack)
@@ -401,7 +402,8 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		// now do the real work
 		System.out.println("Setting up local 3Worlds environment:");
 		System.out.println("Creating the '" + TW_ROOT + "' directory");
-		pack3wAll(os + DOT + Integer.toString(major), Integer.toString(minor), Integer.toString(build));
+		// Window 10 means you get Windows 10.1.0.1?
+		pack3wAll(os /*+ DOT*/ + Integer.toString(major), Integer.toString(minor), Integer.toString(build));
 		FileUtilities.deleteFileTree(new File(DependencySolver.destPath));
 //		if (pack) {
 //			System.out.println("Writing zip file '" + zipFileName + "' for distribution");
