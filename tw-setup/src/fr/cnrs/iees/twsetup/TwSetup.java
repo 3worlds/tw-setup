@@ -62,8 +62,7 @@ import fr.ens.biologie.generic.utils.Logging;
  * As of 6/4/2022, packing of code in 1 single fat jar is the only way to make the code runnable
  * without modularizing the code. no way to pack javafw into a separate jar in a usable way.
 // * 
- * @author Ian Davies
- * @date 10 Dec. 2017
+ * @author Ian Davies - 10 Dec. 2017
  */
 // refactored and carefully tested JG 11/3/2022
 public class TwSetup implements ProjectPaths, TwPaths {
