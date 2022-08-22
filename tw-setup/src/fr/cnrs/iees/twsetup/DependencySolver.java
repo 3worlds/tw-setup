@@ -64,8 +64,9 @@ import fr.ens.biologie.generic.utils.Logging;
 /**
  * <p>
  * A class to retrieve all dependencies declared in the ivy.xml of the current
- * application. Code adapted from
- * {@link https://cwiki.apache.org/confluence/display/IVY/Programmatic+use+of+Ivy}
+ * application. Code adapted from 
+ * <a href="https://cwiki.apache.org/confluence/display/IVY/Programmatic+use+of+Ivy"> here</a>.
+ *
  * </p>
  * 
  * @author Jacques Gignoux - 6 déc. 2017
