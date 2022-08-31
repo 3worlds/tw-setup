@@ -697,11 +697,11 @@ As of 19/9/2019, this is the current solution we use when eclipse enters a cycle
 . wipe out ivy cache (delete local and cache directories) NB this may be rather extreme -  it is simpler to only delete the 3worlds libraries
 . delete all content in lib directories of all projects
 . regenerate all jars, THEN run ivy>refresh on every project, all this in dependency order 
-. delete tw.jar, ModelMaker.jar and ModelRunner.jar
+. delete tw<os name>.jar
 . regenerate them with TwSetup (few minutes)
 
 === Ant
-. Don't run more   than one Ant task at a time.
+. Don't run more than one Ant task at a time.
 
 . Eclipse site:  http://www.apache.org/dist/ant/ivyde/updatesite 
 
