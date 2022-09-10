@@ -45,8 +45,7 @@ import org.apache.ivy.core.report.ResolveReport;
 import org.apache.ivy.core.retrieve.RetrieveOptions;
 
 import au.edu.anu.rscs.aot.util.FileUtilities;
-import au.edu.anu.twcore.project.ProjectPaths;
-import au.edu.anu.twcore.project.TwPaths;
+import au.edu.anu.twcore.project.Project;
 import fr.ens.biologie.generic.utils.Logging;
 
 //import org.apache.ivy.Ivy;
@@ -72,8 +71,8 @@ import fr.ens.biologie.generic.utils.Logging;
  * @author Jacques Gignoux - 6 déc. 2017
  *
  */
-public class DependencySolver implements ProjectPaths, TwPaths {
-	public static final String destPath= TW_ROOT + File.separator + "tmp"; 
+public class DependencySolver  {
+	public static final String destPath= Project.USER_ROOT_TW_ROOT + File.separator + "tmp"; 
 
 	private static Logger log = Logging.getLogger(DependencySolver.class);
 
@@ -96,7 +95,7 @@ public class DependencySolver implements ProjectPaths, TwPaths {
 				e.printStackTrace();
 			}		
 		dir.mkdirs();
-		ivySettingsXmlFile = new File(TW_ROOT + File.separator + "tmp" + File.separator + "ivy-settings.xml");
+		ivySettingsXmlFile = new File(Project.USER_ROOT_TW_ROOT + File.separator + "tmp" + File.separator + "ivy-settings.xml");
 		ivySettingsXmlFile.getParentFile().mkdirs();
 		dependencyFile = new File(depFile);
 		if (ivySettingsXmlFile.exists())

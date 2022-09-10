@@ -35,13 +35,16 @@ import java.text.NumberFormat;
 import java.util.Enumeration;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import static au.edu.anu.twcore.project.TwPaths.*;
+
+import au.edu.anu.twcore.project.Project;
+
+import static au.edu.anu.twcore.project.Project.*;
 
 public class TwDepClassInfo {
 
 	public static void main(String[] args) {
 //		String fn = System.getProperty("user.home") + "/.3w/tw-dep.jar";
-		String fn = TW_ROOT+File.pathSeparator+TW_DEP_JAR;
+		String fn = Project.USER_ROOT_TW_ROOT+File.pathSeparator+TW_DEP_JAR;
 		File f = new File(fn);
 		long sumClassCompressed = 0;
 		long sumClassUncompressed = 0;

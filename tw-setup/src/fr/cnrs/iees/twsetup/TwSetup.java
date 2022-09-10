@@ -46,8 +46,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import au.edu.anu.rscs.aot.util.FileUtilities;
-import au.edu.anu.twcore.project.ProjectPaths;
-import au.edu.anu.twcore.project.TwPaths;
+import au.edu.anu.twcore.project.Project;
 import fr.ens.biologie.generic.utils.Logging;
 
 /**
@@ -65,7 +64,7 @@ import fr.ens.biologie.generic.utils.Logging;
  * @author Ian Davies - 10 Dec. 2017
  */
 // refactored and carefully tested JG 11/3/2022
-public class TwSetup implements ProjectPaths, TwPaths {
+public class TwSetup {
 
 	// version management
 	private static final String workDir = System.getProperty("user.dir") + File.separator + "src";
@@ -119,7 +118,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 	 * @return
 	 */
 	private static File jarFile(String filename) {
-		File file = new File(TW_ROOT + File.separator + filename);
+		File file = new File(Project.USER_ROOT_TW_ROOT + File.separator + filename);
 		if (file.exists())
 			file.delete();
 		try {
@@ -137,7 +136,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 	private static void pack3wAll(String major, String minor, String build) {
 		ThreeWorldsJar twDepPacker = new ThreeWorldsJar(major, minor, build);
 //		ThreeWorldsJar fxDepPacker = new ThreeWorldsJar(major, minor, build);
-		String twDepFileName = TW_DEP_JAR;
+		String twDepFileName = Project.TW_DEP_JAR;
 //		String twFxFileName = TW_FX_DEP_JAR;
 		// main class in manifest
 		twDepPacker.setMainClass(MODELMAKER_CLASS);
@@ -247,7 +246,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 
 	private static void confirmVersionUpgrade(String oldv, String newv) {
 		System.out.print(
-				"Upgrading '" + TW_DEP_JAR + "' from version " + oldv + " to version " + newv.toString() + " (Y/n)? ");
+				"Upgrading '" + Project.TW_DEP_JAR + "' from version " + oldv + " to version " + newv.toString() + " (Y/n)? ");
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			String s = br.readLine();
@@ -348,11 +347,11 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		// exit if any error in arguments
 		if (argError) {
 			System.out.println("Wrong arguments. Usage ('[...]' means 'optional'):\n" + "Setup [version] [option]\n"
-					+ "  no arguments: regenerate " + TW_DEP_JAR + " using last version information\n"
-					+ "  1 or 2 arguments:\n" + "    option = \"-zip\": regenerate " + TW_DEP_JAR
-					+ " and zip it for distribution\n" + "    version = \"-build\": regenerate " + TW_DEP_JAR
-					+ " increasing 'build' version number\n" + "    version = \"-minor\": regenerate " + TW_DEP_JAR
-					+ " increasing 'minor' version number\n" + "    version = \"-major\": regenerate " + TW_DEP_JAR
+					+ "  no arguments: regenerate " + Project.TW_DEP_JAR + " using last version information\n"
+					+ "  1 or 2 arguments:\n" + "    option = \"-zip\": regenerate " + Project.TW_DEP_JAR
+					+ " and zip it for distribution\n" + "    version = \"-build\": regenerate " +Project.TW_DEP_JAR
+					+ " increasing 'build' version number\n" + "    version = \"-minor\": regenerate " + Project.TW_DEP_JAR
+					+ " increasing 'minor' version number\n" + "    version = \"-major\": regenerate " + Project.TW_DEP_JAR
 					+ " increasing 'major' version number\n" + "Aborting.");
 			System.exit(1);
 		}
@@ -362,22 +361,22 @@ public class TwSetup implements ProjectPaths, TwPaths {
 		// both manifests will have os - tw.jar doesnt need this but leave for now for debugging.
 		String zipFileName = null;
 		if (pack)
-			zipFileName = TW_ROOT + "-" + os + DOT + version.toString() + DOT + "zip";
+			zipFileName = Project.USER_ROOT_TW_ROOT + "-" + os + DOT + version.toString() + DOT + "zip";
 
 		// last chance to exit without harm
 		if (args.length == 0)
-			System.out.println("Regenerating '" + TW_DEP_JAR + "' version " + os + DOT + version.toString());
+			System.out.println("Regenerating '" + Project.TW_DEP_JAR + "' version " + os + DOT + version.toString());
 		else if (args.length == 1) {
 			if (pack == true) {
-				System.out.println("Regenerating '" + TW_DEP_JAR + "' version " + os + DOT + version.toString()
+				System.out.println("Regenerating '" + Project.TW_DEP_JAR + "' version " + os + DOT + version.toString()
 						+ " and packing it into '" + zipFileName + "'");
 			} else {
 				confirmVersionUpgrade(oldv, version.toString());
-				System.out.println("Generating '" + TW_DEP_JAR + "' version " + os + DOT + version.toString());
+				System.out.println("Generating '" + Project.TW_DEP_JAR + "' version " + os + DOT + version.toString());
 			}
 		} else if (args.length == 2) {
 			confirmVersionUpgrade(oldv, version.toString());
-			System.out.println("Generating '" + TW_DEP_JAR + "' version " + os + DOT + version.toString()
+			System.out.println("Generating '" + Project.TW_DEP_JAR + "' version " + os + DOT + version.toString()
 					+ " and packing it into '" + zipFileName + "'");
 		}
 
@@ -400,7 +399,7 @@ public class TwSetup implements ProjectPaths, TwPaths {
 
 		// now do the real work
 		System.out.println("Setting up local 3Worlds environment:");
-		System.out.println("Creating the '" + TW_ROOT + "' directory");
+		System.out.println("Creating the '" + Project.USER_ROOT_TW_ROOT + "' directory");
 		// Window 10 means you get Windows 10.1.0.1?
 		pack3wAll(os /*+ DOT*/ + Integer.toString(major), Integer.toString(minor), Integer.toString(build));
 		FileUtilities.deleteFileTree(new File(DependencySolver.destPath));
