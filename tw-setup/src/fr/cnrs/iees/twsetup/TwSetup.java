@@ -118,7 +118,7 @@ public class TwSetup {
 	 * @return
 	 */
 	private static File jarFile(String filename) {
-		File file = new File(Project.USER_ROOT_TW_ROOT + File.separator + filename);
+		File file = new File(Project.TW_HOME + File.separator + filename);
 		if (file.exists())
 			file.delete();
 		try {
@@ -361,7 +361,7 @@ public class TwSetup {
 		// both manifests will have os - tw.jar doesnt need this but leave for now for debugging.
 		String zipFileName = null;
 		if (pack)
-			zipFileName = Project.USER_ROOT_TW_ROOT + "-" + os + DOT + version.toString() + DOT + "zip";
+			zipFileName = Project.TW_HOME + "-" + os + DOT + version.toString() + DOT + "zip";
 
 		// last chance to exit without harm
 		if (args.length == 0)
@@ -399,7 +399,7 @@ public class TwSetup {
 
 		// now do the real work
 		System.out.println("Setting up local 3Worlds environment:");
-		System.out.println("Creating the '" + Project.USER_ROOT_TW_ROOT + "' directory");
+		System.out.println("Creating the '" + Project.TW_HOME + "' directory");
 		// Window 10 means you get Windows 10.1.0.1?
 		pack3wAll(os /*+ DOT*/ + Integer.toString(major), Integer.toString(minor), Integer.toString(build));
 		FileUtilities.deleteFileTree(new File(DependencySolver.destPath));

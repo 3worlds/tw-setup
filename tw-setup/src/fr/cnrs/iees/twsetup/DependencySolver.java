@@ -72,7 +72,7 @@ import fr.ens.biologie.generic.utils.Logging;
  *
  */
 public class DependencySolver  {
-	public static final String destPath= Project.USER_ROOT_TW_ROOT + File.separator + "tmp"; 
+	public static final String destPath= Project.TW_HOME + File.separator + "tmp"; 
 
 	private static Logger log = Logging.getLogger(DependencySolver.class);
 
@@ -95,7 +95,7 @@ public class DependencySolver  {
 				e.printStackTrace();
 			}		
 		dir.mkdirs();
-		ivySettingsXmlFile = new File(Project.USER_ROOT_TW_ROOT + File.separator + "tmp" + File.separator + "ivy-settings.xml");
+		ivySettingsXmlFile = new File(Project.TW_HOME + File.separator + "tmp" + File.separator + "ivy-settings.xml");
 		ivySettingsXmlFile.getParentFile().mkdirs();
 		dependencyFile = new File(depFile);
 		if (ivySettingsXmlFile.exists())

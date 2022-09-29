@@ -44,7 +44,7 @@ public class TwDepClassInfo {
 
 	public static void main(String[] args) {
 //		String fn = System.getProperty("user.home") + "/.3w/tw-dep.jar";
-		String fn = Project.USER_ROOT_TW_ROOT+File.pathSeparator+TW_DEP_JAR;
+		String fn = Project.TW_HOME+File.pathSeparator+TW_DEP_JAR;
 		File f = new File(fn);
 		long sumClassCompressed = 0;
 		long sumClassUncompressed = 0;
