@@ -47,7 +47,7 @@ import java.util.List;
 import java.util.logging.Level;
 import au.edu.anu.rscs.aot.util.FileUtilities;
 import au.edu.anu.twcore.project.Project;
-import fr.ens.biologie.generic.utils.Logging;
+import fr.cnrs.iees.omhtk.utils.Logging;
 
 /**
  * A class to properly generate the .3w repo with the necessary dependencies

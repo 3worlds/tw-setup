@@ -32,9 +32,7 @@ package fr.cnrs.iees.twsetup;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
 
 import org.apache.ivy.Ivy;
@@ -46,7 +44,7 @@ import org.apache.ivy.core.retrieve.RetrieveOptions;
 
 import au.edu.anu.rscs.aot.util.FileUtilities;
 import au.edu.anu.twcore.project.Project;
-import fr.ens.biologie.generic.utils.Logging;
+import fr.cnrs.iees.omhtk.utils.Logging;
 
 //import org.apache.ivy.Ivy;
 //import org.apache.ivy.core.LogOptions;
