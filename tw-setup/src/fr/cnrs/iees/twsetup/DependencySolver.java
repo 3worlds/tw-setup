@@ -42,21 +42,10 @@ import org.apache.ivy.core.module.id.ModuleRevisionId;
 import org.apache.ivy.core.report.ResolveReport;
 import org.apache.ivy.core.retrieve.RetrieveOptions;
 
-import au.edu.anu.rscs.aot.util.FileUtilities;
+import au.edu.anu.omhtk.util.FileUtilities;
 import au.edu.anu.twcore.project.Project;
 import fr.cnrs.iees.omhtk.utils.Logging;
 
-//import org.apache.ivy.Ivy;
-//import org.apache.ivy.core.LogOptions;
-//import org.apache.ivy.core.module.descriptor.ModuleDescriptor;
-//import org.apache.ivy.core.module.id.ModuleRevisionId;
-//import org.apache.ivy.core.report.ResolveReport;
-//import org.apache.ivy.core.retrieve.RetrieveOptions;
-//
-//import au.edu.anu.rscs.aot.util.FileUtilities;
-//import au.edu.anu.twcore.project.ProjectPaths;
-//import au.edu.anu.twcore.project.TwPaths;
-//import fr.ens.biologie.generic.utils.Logging;
 
 /**
  * <p>

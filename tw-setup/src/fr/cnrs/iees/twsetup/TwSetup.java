@@ -45,7 +45,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
-import au.edu.anu.rscs.aot.util.FileUtilities;
+import au.edu.anu.omhtk.util.FileUtilities;
 import au.edu.anu.twcore.project.Project;
 import fr.cnrs.iees.omhtk.utils.Logging;
 
