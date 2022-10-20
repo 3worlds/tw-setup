@@ -83,8 +83,8 @@ public class VersionSettings {
 	 *
 	 */
 	protected static String[][] DEPS = {
-			{"fr.cnrs.iees.omhtk", "generics", "[0.4.0,)", null},
-			{"fr.cnrs.iees.tw-core", "tw-core", "[0.6.4,)", null},
+			{"fr.cnrs.iees.omhtk", "generics", "[0.5.0,)", null},
+			{"fr.cnrs.iees.tw-core", "tw-core", "[0.6.5,)", null},
 			{"org.apache.ivy", "ivy", "2.2.0", null},
 	};
 
